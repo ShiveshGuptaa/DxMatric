@@ -736,7 +736,7 @@ body = f'Please find the data below in CSV format:\n\n{csv_data}'
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
 username = 'shivesh.kumar@pharmeasy.in'
-password = 'yots jkzp nucv ieeb'
+password = '***change'
 
 # Create the email
 msg = MIMEMultipart() 
