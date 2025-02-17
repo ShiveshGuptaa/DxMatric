@@ -21,7 +21,7 @@ start_date_str = input("Enter the start date (YYYY-MM-DD): ")
 end_date_str = input("Enter the end date (YYYY-MM-DD): ")
 
 
-Cookie = 'ajs_anonymous_id=a570ac24-e7e3-4ffa-80bf-3e9954a91b2e; INSTANA_JSESSIONID=node014epqt00i3zlh1xqawy9c10som279037.node0; in-token=tMI428MNSgyfOS86-eDtuQ; pac4jCsrfToken=914763dfc44342af988db2d757314b0c; JSESSIONID=dummy'
+Cookie = 'pac4jCsrfToken=9a44737f70554af0a5e8496bba115dff; notice_close=true; notice_behavior=implied|eu; ajs_user_id=instanaProduct-63cf686b260c7400016e143a; ajs_anonymous_id=cf0d80ff-f649-4fd5-837b-a9c6df38b1e3; userContext=n/a|0|0|0|IN|KA|1|n/a|implied|zz|n/a|n/a|n/a|n/a; JSESSIONID=dummy; OPTOUTMULTI=0:0%7Cc1:1%7Cc2:0%7Cc3:0; utag_main=v_id:0194dfdb75b300033911d61f1c1505075003406d00bd0$_sn:20$_se:1$_ss:1$_st:1739520318459$is_country_requiring_explicit_consent:false$ses_id:1739518518459%3Bexp-session$_pn:1%3Bexp-session; INSTANA_JSESSIONID=node01boqkd1asuffz1cpwobgq99v2l56334.node0; in-token=f_pdlAxmSPiJy1sS4256DA; pac4jCsrfToken=e5f576a5cb5b4ded9b03cfcf22cc1977; pageviewContext=57fa3832-2654-4a25-b882-50f2c4eeeba4; ak_bmsc=1EA129960A71279F27C3C9F99601719A~000000000000000000000000000000~YAAQxvQ3F2NC/wCVAQAAIqIZExo5vW8PJ2mzOouLs2ShhI7i+530fvU7X65+bMdP+ADpbdCde4XmGC7t1vNO+WUxDHmyny7vq1YFKZBJwSen0NPCyBssTSkwDAoJFuC0inihiHM8hdNrVY+42W4d9JWXZ3DUMYbBMIwduQB/gh+uIzgjo7VSoQ9mmukRwP1jFfX9LsIi5D4cRiwz/vRBLXW5wIcYu5XESM2UDB3aVG4fpXqj7iBIXckC8tYMVTCrM5kUlHXBzU18s3Hu3keXXlbYslV9KZZ0USDi47+9Ww7G+DpbAsMVq+Fj+VdCVaNGLYNzMR6RhWwfTswMzaOKdJzoC6BQHwH1bfc0qUdeTcBLGICvTYx6rKmVhHFHIzyXnwPRhq8hTC8U30VZgkuGvf8B4yY='
 csrf_url = 'https://consumer-pharmeasy.instana.io/csrf/token'
 csrf_headers = {
     'Accept': '*/*',
@@ -99,125 +99,125 @@ Dx_Data_Body = {
                 "type": "EXPRESSION",
                 "logicalOperator": "OR",
                 "elements": [
+                    # {
+                    #     "type": "TAG_FILTER",
+                    #     "name": "endpoint.name",
+                    #     "operator": "EQUALS",
+                    #     "entity": "DESTINATION",
+                    #     "value": "GET /techso/v1/api/ordervisitdetailsoptimize/getordervisitdetailsorderwise"
+                    # },
                     {
                         "type": "TAG_FILTER",
                         "name": "endpoint.name",
                         "operator": "EQUALS",
                         "entity": "DESTINATION",
-                        "value": "GET /techso/v1/api/ordervisitdetailsoptimize/getordervisitdetailsorderwise"
+                        "value": "POST /techso/v1/api/WOE"
                     },
+                    # {
+                    #     "type": "TAG_FILTER",
+                    #     "name": "endpoint.name",
+                    #     "operator": "EQUALS",
+                    #     "entity": "DESTINATION",
+                    #     "value": "GET /techso/v1/api/orderdetailsbyvisit/{orderid}"
+                    # },
                     {
                         "type": "TAG_FILTER",
                         "name": "endpoint.name",
                         "operator": "EQUALS",
                         "entity": "DESTINATION",
-                        "value": "POST /techso/v1/api/woe"
+                        "value": "POST /techso/v1/api/PEEvents/PEOrderEdit"
                     },
+                    # {
+                    #     "type": "TAG_FILTER",
+                    #     "name": "endpoint.name",
+                    #     "operator": "EQUALS",
+                    #     "entity": "DESTINATION",
+                    #     "value": "POST /techso/v1/api/peevents/peupdatepatient"
+                    # },
                     {
                         "type": "TAG_FILTER",
                         "name": "endpoint.name",
                         "operator": "EQUALS",
                         "entity": "DESTINATION",
-                        "value": "GET /techso/v1/api/orderdetailsbyvisit/{orderid}"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "POST /techso/v1/api/peevents/peorderedit"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "POST /techso/v1/api/peevents/peupdatepatient"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "POST /techso/v1/api/orderallocation/ordereditdetails"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "POST /techso/v1/api/createpatient/phlebo"
+                        "value": "POST /techso/v1/api/OrderAllocation/OrderEditDetails"
                     },
                     {
                         "type": "TAG_FILTER",
                         "name": "endpoint.name",
                         "operator": "EQUALS",
                         "entity": "DESTINATION",
-                        "value": "POST /techso/v1/api/orderallocation/uploadblob"
+                        "value": "POST /techso/v1/api/createPatient/phlebo"
                     },
                     {
                         "type": "TAG_FILTER",
                         "name": "endpoint.name",
                         "operator": "EQUALS",
                         "entity": "DESTINATION",
-                        "value": "GET /api/order/details/{orderId}"
+                        "value": "POST /techso/v1/api/OrderAllocation/Uploadblob"
                     },
                     {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "GET /api/order/ben-details/{orderId}"
+                      "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/order/details/{orderId}"
                     },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "GET /api/order/ben-test-details/{orderId}"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "CONTAINS",
-                        "entity": "DESTINATION",
-                        "value": "GET /api/order/booking-ben-test-details/{orderId}"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "POST /api/order/add-ben"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "PUT /api/order/edit-ben"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "DELETE /api/order/remove-ben/{orderId}"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "GET /api/reports/getpatientreport"
-                    },
-                    {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "POST /api/order/update-status/{orderId}"
-                    },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /api/order/ben-details/{orderId}"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /api/order/ben-test-details/{orderId}"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "CONTAINS",
+            "entity": "DESTINATION",
+            "value": "GET /api/order/booking-ben-test-details/{orderId}"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /api/order/add-ben"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "PUT /api/order/edit-ben"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "DELETE /api/order/remove-ben/{orderId}"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /api/reports/getpatientreport"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /api/order/update-status/{orderId}"
+          },
                     {
                         "type": "TAG_FILTER",
                         "name": "endpoint.name",
@@ -225,12 +225,152 @@ Dx_Data_Body = {
                         "entity": "DESTINATION",
                         "value": "GET /sample-details"
                     },
+                    # {
+                    #     "type": "TAG_FILTER",
+                    #     "name": "endpoint.name",
+                    #     "operator": "EQUALS",
+                    #     "entity": "DESTINATION",
+                    #     "value": "GET /report-page-details/{id}"
+                    # },
                     {
-                        "type": "TAG_FILTER",
-                        "name": "endpoint.name",
-                        "operator": "EQUALS",
-                        "entity": "DESTINATION",
-                        "value": "GET /report-page-details/{id}"
+                      "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/order"
+                    },
+                    {
+                      "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "DELETE /api/v1/order/{externalOrderId}/cancel"
+                    },
+                    {
+                      "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /report/{id}"
+                    },
+                    {
+                      "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/barcodes/check-uniqueness"
+                    },
+                    {
+                      "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "POST /api/v1/order"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/orders/patients/{mappingPatientId}"
+                    },
+                    # {
+                    #    "type": "TAG_FILTER",
+                    #   "name": "endpoint.name",
+                    #   "operator": "EQUALS",
+                    #   "entity": "DESTINATION",
+                    #   "value": "GET /api/v1/documents/{type}/{fileName}/download"
+                    # },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/order-list"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/documents/{type}/upload"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/orders/{externalOrderId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/orders/{orderId}/categories/{category}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "POST /evaluate-tat"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "POST /get-evaluated-tat-by-patientIds"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /orderlist"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/order-list"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /patientdetails"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/orders/{orderId}"
                     }
                 ]
             }
@@ -319,61 +459,61 @@ error_5xx_body ={
         "type": "EXPRESSION",
         "logicalOperator": "OR",
        "elements": [
+          # {
+          #   "type": "TAG_FILTER",
+          #   "name": "endpoint.name",
+          #   "operator": "EQUALS",
+          #   "entity": "DESTINATION",
+          #   "value": "GET /techso/v1/api/ordervisitdetailsoptimize/getordervisitdetailsorderwise"
+          # },
           {
             "type": "TAG_FILTER",
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": "GET /techso/v1/api/ordervisitdetailsoptimize/getordervisitdetailsorderwise"
+            "value": "POST /techso/v1/api/WOE"
+          },
+          # {
+          #   "type": "TAG_FILTER",
+          #   "name": "endpoint.name",
+          #   "operator": "EQUALS",
+          #   "entity": "DESTINATION",
+          #   "value": "GET /techso/v1/api/orderdetailsbyvisit/{orderid}"
+          # },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /techso/v1/api/PEEvents/PEOrderEdit"
+          },
+          # {
+          #   "type": "TAG_FILTER",
+          #   "name": "endpoint.name",
+          #   "operator": "EQUALS",
+          #   "entity": "DESTINATION",
+          #   "value": "POST /techso/v1/api/peevents/peupdatepatient"
+          # },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /techso/v1/api/OrderAllocation/OrderEditDetails"
           },
           {
             "type": "TAG_FILTER",
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/woe"
+            "value": "POST /techso/v1/api/createPatient/phlebo"
           },
           {
             "type": "TAG_FILTER",
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": "GET /techso/v1/api/orderdetailsbyvisit/{orderid}"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/peevents/peorderedit"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/peevents/peupdatepatient"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/orderallocation/ordereditdetails"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/createpatient/phlebo"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/orderallocation/uploadblob"
+            "value": "POST /techso/v1/api/OrderAllocation/Uploadblob"
           },
           {
             "type": "TAG_FILTER",
@@ -445,13 +585,153 @@ error_5xx_body ={
             "entity": "DESTINATION",
             "value": "GET /sample-details"
           },
+          # {
+          #   "type": "TAG_FILTER",
+          #   "name": "endpoint.name",
+          #   "operator": "EQUALS",
+          #   "entity": "DESTINATION",
+          #   "value": "GET /report-page-details/{id}"
+          # },
           {
             "type": "TAG_FILTER",
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": "GET /report-page-details/{id}"
-          }
+            "value": "PUT /api/v1/order"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "DELETE /api/v1/order/{externalOrderId}/cancel"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /report/{id}"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /api/v1/barcodes/check-uniqueness"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /api/v1/order"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /api/v1/orders/patients/{mappingPatientId}"
+          },
+                    # {
+                    #    "type": "TAG_FILTER",
+                    #   "name": "endpoint.name",
+                    #   "operator": "EQUALS",
+                    #   "entity": "DESTINATION",
+                    #   "value": "GET /api/v1/documents/{type}/{fileName}/download"
+                    # },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/order-list"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/documents/{type}/upload"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/orders/{externalOrderId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/orders/{orderId}/categories/{category}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "POST /evaluate-tat"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "POST /get-evaluated-tat-by-patientIds"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /orderlist"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/order-list"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /patientdetails"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/orders/{orderId}"
+                    }
         ]
       }
     ]
@@ -507,61 +787,61 @@ error_4xx_body = {
         "type": "EXPRESSION",
         "logicalOperator": "OR",
        "elements": [
+          # {
+          #   "type": "TAG_FILTER",
+          #   "name": "endpoint.name",
+          #   "operator": "EQUALS",
+          #   "entity": "DESTINATION",
+          #   "value": "GET /techso/v1/api/ordervisitdetailsoptimize/getordervisitdetailsorderwise"
+          # },
           {
             "type": "TAG_FILTER",
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": "GET /techso/v1/api/ordervisitdetailsoptimize/getordervisitdetailsorderwise"
+            "value": "POST /techso/v1/api/WOE"
+          },
+          # {
+          #   "type": "TAG_FILTER",
+          #   "name": "endpoint.name",
+          #   "operator": "EQUALS",
+          #   "entity": "DESTINATION",
+          #   "value": "GET /techso/v1/api/orderdetailsbyvisit/{orderid}"
+          # },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /techso/v1/api/PEEvents/PEOrderEdit"
+          },
+          # {
+          #   "type": "TAG_FILTER",
+          #   "name": "endpoint.name",
+          #   "operator": "EQUALS",
+          #   "entity": "DESTINATION",
+          #   "value": "POST /techso/v1/api/peevents/peupdatepatient"
+          # },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /techso/v1/api/OrderAllocation/OrderEditDetails"
           },
           {
             "type": "TAG_FILTER",
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/woe"
+            "value": "POST /techso/v1/api/createPatient/phlebo"
           },
           {
             "type": "TAG_FILTER",
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": "GET /techso/v1/api/orderdetailsbyvisit/{orderid}"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/peevents/peorderedit"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/peevents/peupdatepatient"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/orderallocation/ordereditdetails"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/createpatient/phlebo"
-          },
-          {
-            "type": "TAG_FILTER",
-            "name": "endpoint.name",
-            "operator": "EQUALS",
-            "entity": "DESTINATION",
-            "value": "POST /techso/v1/api/orderallocation/uploadblob"
+            "value": "POST /techso/v1/api/OrderAllocation/Uploadblob"
           },
           {
             "type": "TAG_FILTER",
@@ -633,13 +913,153 @@ error_4xx_body = {
             "entity": "DESTINATION",
             "value": "GET /sample-details"
           },
+          # {
+          #   "type": "TAG_FILTER",
+          #   "name": "endpoint.name",
+          #   "operator": "EQUALS",
+          #   "entity": "DESTINATION",
+          #   "value": "GET /report-page-details/{id}"
+          # },
           {
             "type": "TAG_FILTER",
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
-            "value": "GET /report-page-details/{id}"
-          }
+            "value": "PUT /api/v1/order"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "DELETE /api/v1/order/{externalOrderId}/cancel"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /report/{id}"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /api/v1/barcodes/check-uniqueness"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /api/v1/order"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "GET /api/v1/orders/patients/{mappingPatientId}"
+          },
+                    # {
+                    #    "type": "TAG_FILTER",
+                    #   "name": "endpoint.name",
+                    #   "operator": "EQUALS",
+                    #   "entity": "DESTINATION",
+                    #   "value": "GET /api/v1/documents/{type}/{fileName}/download"
+                    # },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/order-list"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/documents/{type}/upload"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/orders/{externalOrderId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/orders/{orderId}/categories/{category}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "PUT /api/v1/chn/patients/{patientId}"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "POST /evaluate-tat"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "POST /get-evaluated-tat-by-patientIds"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /orderlist"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/order-list"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /patientdetails"
+                    },
+                    {
+                       "type": "TAG_FILTER",
+                      "name": "endpoint.name",
+                      "operator": "EQUALS",
+                      "entity": "DESTINATION",
+                      "value": "GET /api/v1/orders/{orderId}"
+                    }
         ]
       }
     ]
@@ -679,13 +1099,13 @@ for item in Dx_4xx_data.get('items', []):
 
 
 Dx_Endpoints_Order = [
-    'GET /techso/v1/api/ordervisitdetailsoptimize/getordervisitdetailsorderwise',
-    'GET /techso/v1/api/orderdetailsbyvisit/{orderid}',
-    'POST /techso/v1/api/woe',
-    'POST /techso/v1/api/peevents/peupdatepatient',
-    'POST /techso/v1/api/orderallocation/ordereditdetails',
-    'POST /techso/v1/api/createpatient/phlebo',
-    'POST /techso/v1/api/peevents/peorderedit',
+   # 'GET /techso/v1/api/ordervisitdetailsoptimize/getordervisitdetailsorderwise',
+   # 'GET /techso/v1/api/orderdetailsbyvisit/{orderid}',
+    'POST /techso/v1/api/WOE',
+   # 'POST /techso/v1/api/peevents/peupdatepatient',
+    'POST /techso/v1/api/OrderAllocation/OrderEditDetails',
+    'POST /techso/v1/api/createPatient/phlebo',
+    'POST /techso/v1/api/PEEvents/PEOrderEdit',
     'GET /api/order/details/{orderId}',
     'GET /api/order/ben-details/{orderId}',
     'GET /api/order/ben-test-details/{orderId}',
@@ -695,9 +1115,29 @@ Dx_Endpoints_Order = [
     'GET /api/order/booking-ben-test-details/{orderId}',
     'GET /api/reports/getpatientreport',
     'POST /api/order/update-status/{orderId}',
-    'POST /techso/v1/api/orderallocation/uploadblob',
+    'POST /techso/v1/api/OrderAllocation/Uploadblob',
     'GET /sample-details',
-    'GET /report-page-details/{id}'
+    #'GET /report-page-details/{id}',
+    'PUT /api/v1/order',
+    'DELETE /api/v1/order/{externalOrderId}/cancel',
+    'GET /report/{id}',
+    'GET /api/v1/barcodes/check-uniqueness',
+    'POST /api/v1/order',
+    'GET /api/v1/orders/patients/{mappingPatientId}',
+    #'GET /api/v1/documents/{type}/{fileName}/download',
+    'GET /api/v1/order-list',
+    'GET /api/v1/documents/{type}/upload',
+    'GET /api/v1/orders/{externalOrderId}',
+    'PUT /api/v1/orders/{orderId}/categories/{category}',
+    'GET /api/v1/chn/patients/{patientId}',
+    'PUT /api/v1/chn/patients/{patientId}',
+    #'POST /v1/patients/report-status',
+    'POST /evaluate-tat',
+    'POST /get-evaluated-tat-by-patientIds',
+    'GET /orderlist',
+    'GET /api/v1/order-list',
+    'GET /patientdetails',
+    'GET /api/v1/orders/{orderId}'
 ]
 
 
@@ -729,14 +1169,14 @@ print(csv_data)
 
 
 # Email configuration
-from_email = 'shivesh.kumar@pharmeasy.in'
-to_email = 'oxygen-dev@pharmeasy.in'
+from_email = 'sindhu.madakasira@pharmeasy.in'
+to_email = 'oxygen-dev@pharmeasy.in, sindhu.madakasira@pharmeasy.in'
 subject = f'Oxygen Diag API Metrics: {start_date_str} to {end_date_str}'
 body = f'Please find the data below in CSV format:\n\n{csv_data}'
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
-username = 'shivesh.kumar@pharmeasy.in'
-password = '***change'
+username = 'sindhu.madakasira@pharmeasy.in'
+password = 'lanu ksds cjpr tkqb'
 
 # Create the email
 msg = MIMEMultipart() 
