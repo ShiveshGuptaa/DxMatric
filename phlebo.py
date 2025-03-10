@@ -21,7 +21,7 @@ start_date_str = input("Enter the start date (YYYY-MM-DD): ")
 end_date_str = input("Enter the end date (YYYY-MM-DD): ")
 
 
-Cookie = 'pac4jCsrfToken=9a44737f70554af0a5e8496bba115dff; notice_close=true; notice_behavior=implied|eu; ajs_user_id=instanaProduct-63cf686b260c7400016e143a; ajs_anonymous_id=cf0d80ff-f649-4fd5-837b-a9c6df38b1e3; userContext=n/a|0|0|0|IN|KA|1|n/a|implied|zz|n/a|n/a|n/a|n/a; JSESSIONID=dummy; OPTOUTMULTI=0:0%7Cc1:1%7Cc2:0%7Cc3:0; utag_main=v_id:0194dfdb75b300033911d61f1c1505075003406d00bd0$_sn:20$_se:1$_ss:1$_st:1739520318459$is_country_requiring_explicit_consent:false$ses_id:1739518518459%3Bexp-session$_pn:1%3Bexp-session; INSTANA_JSESSIONID=node01boqkd1asuffz1cpwobgq99v2l56334.node0; in-token=f_pdlAxmSPiJy1sS4256DA; pac4jCsrfToken=e5f576a5cb5b4ded9b03cfcf22cc1977; pageviewContext=57fa3832-2654-4a25-b882-50f2c4eeeba4; ak_bmsc=1EA129960A71279F27C3C9F99601719A~000000000000000000000000000000~YAAQxvQ3F2NC/wCVAQAAIqIZExo5vW8PJ2mzOouLs2ShhI7i+530fvU7X65+bMdP+ADpbdCde4XmGC7t1vNO+WUxDHmyny7vq1YFKZBJwSen0NPCyBssTSkwDAoJFuC0inihiHM8hdNrVY+42W4d9JWXZ3DUMYbBMIwduQB/gh+uIzgjo7VSoQ9mmukRwP1jFfX9LsIi5D4cRiwz/vRBLXW5wIcYu5XESM2UDB3aVG4fpXqj7iBIXckC8tYMVTCrM5kUlHXBzU18s3Hu3keXXlbYslV9KZZ0USDi47+9Ww7G+DpbAsMVq+Fj+VdCVaNGLYNzMR6RhWwfTswMzaOKdJzoC6BQHwH1bfc0qUdeTcBLGICvTYx6rKmVhHFHIzyXnwPRhq8hTC8U30VZgkuGvf8B4yY='
+Cookie = 'notice_close=true; notice_behavior=implied|eu; ajs_user_id=instanaProduct-63cf686b260c7400016e143a; ajs_anonymous_id=cf0d80ff-f649-4fd5-837b-a9c6df38b1e3; userContext=n/a|0|0|0|IN|KA|1|n/a|implied|zz|n/a|n/a|n/a|n/a; JSESSIONID=dummy; pac4jCsrfToken=8d319290c1b74415aa100070ef501139; in-token=hZKjEtwKTvWW6r_9lkr7XA; INSTANA_JSESSIONID=node0y37bdixco11n14rfk7kka19hs4656.node0; OPTOUTMULTI=0:0%7Cc1:1%7Cc2:0%7Cc3:0; TAsessionID=e7e37530-a8b8-4649-9548-9ae344fd4e95|NEW; ak_bmsc=6E4838512650FECF8CC2124C064E44C4~000000000000000000000000000000~YAAQ1fQ3F6Z/Q1eVAQAAz+tlfxsidVJHpq7usjLM0I/sqCFzrrm1fsf2gKeSD3476myolUeKmMj3CdGfZJEMU6iAvFDbGOr9zianl7SYorjfShSFRLlDXmBWAfCb5qaN35PXRGmI1a01ioo7UikIwXQn7MKAxi1aEsOAmkhpnicXvC34s3FygSBIViFkzFHF1d9KjAuilk8ZVwMX1atRQYH1S0lNGikDq8feoJbZWhEIdffN+eZluFoLQJJhRT4XQT/SSXLQ9l/MZdY5dCShTXgaYc4sKTQjKM9vaN74HbUVcHpYlxjgejTrRYbh0wlmXOoL7KAUZjtvmNkywwsZGUnPknbvIHmHYwjG6+4d1Qs5/a/MX+mslZhbP3OJiKmkkDvSeBuPDr4Jd/xoYHbfpOD+aWw=; utag_main=v_id:0194dfdb75b300033911d61f1c1505075003406d00bd0$_sn:70$_se:38$_ss:0$_st:1741600965840$is_country_requiring_explicit_consent:false$ses_id:1741598817010%3Bexp-session$_pn:1%3Bexp-session; pac4jCsrfToken=0457aeaeb0394cc3b44f33c39e7ae3db; pageviewContext=4618124d-15da-46b3-94d5-ec86b61b28a3'
 csrf_url = 'https://consumer-pharmeasy.instana.io/csrf/token'
 csrf_headers = {
     'Accept': '*/*',
@@ -161,6 +161,13 @@ Dx_Data_Body = {
             "operator": "EQUALS",
             "entity": "DESTINATION",
             "value": "GET /api/task/merge-eligble-orders"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
+            "value": "POST /api/phlebo/calculate-incentive"
           },
           {
             "type": "TAG_FILTER",
@@ -408,6 +415,13 @@ error_5xx_body ={
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
+            "value": "POST /api/phlebo/calculate-incentive"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
             "value": "GET /api/slot/v1/slot-list/{city_id}"
           },
           {
@@ -617,6 +631,13 @@ error_4xx_body = {
             "name": "endpoint.name",
             "operator": "EQUALS",
             "entity": "DESTINATION",
+            "value": "POST /api/phlebo/calculate-incentive"
+          },
+          {
+            "type": "TAG_FILTER",
+            "name": "endpoint.name",
+            "operator": "EQUALS",
+            "entity": "DESTINATION",
             "value": "GET /api/slot/v1/slot-list/{city_id}"
           },
           {
@@ -751,6 +772,7 @@ Dx_Endpoints_Order = [
    'GET /api/v1/data/available-phlebos',
    'POST /api/task/phlebo-merge-order',
    'GET /api/task/merge-eligble-orders',
+   'POST /api/phlebo/calculate-incentive',
    'GET /api/slot/v1/slot-list/{city_id}',
    'GET /api/slot/v1/slot-info/{Date}/{city_id}',
    'POST /api/slot/v1/bulk-slot-list',
